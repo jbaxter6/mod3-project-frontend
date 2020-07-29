@@ -1,0 +1,13 @@
+#header {
+    display: inline-block;
+    background-color: white;
+    width: 100vw;
+    height: 10vh;
+    text-align: left;
+    color: black;
+}
+
+#main {
+    height: 90vh;
+    background-color: white;
+}
