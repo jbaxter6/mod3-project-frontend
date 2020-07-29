@@ -1,7 +1,9 @@
 const baseUrl = 'http://localhost:3000/api/v1/users'
+const interestUrl = 'http://localhost:3000/api/v1/interests'
 
 document.addEventListener("DOMContentLoaded", function(e){
     fetchUsers()
+    fetchInterests()
 })
 
 const fetchUsers = () => {
@@ -37,17 +39,74 @@ const renderUser = user => {
     <p>Do you have kids: ${user.has_kids}</p>
     `
     userCard.appendChild(userDetails)
+}
 
-    // columnsDiv.classList = 'columns'
+const fetchInterests = () => {
+    fetch(interestUrl)
+    .then(response => response.json())
+    .then(interests => 
+        renderInterests(interests))
+}
 
-    // const div = document.createElement('div')
-    // div.classList = 'column'
-    // div.innerHTML = `
-    // <h1>${user.name}</h1>
-    // <img src="${user.image}" height="200" width="200">
-    // `
-    // columnsDiv.appendChild(div)
-    // main.appendChild(columnsDiv)
+const renderInterests = interests => {
+    interests.forEach(interest => {
+        renderInterest(interest)
+    })
+}
+    
+const renderInterest = interest => {
+const fieldset = document.querySelector('#form-checkbox')
+const div = document.createElement('div')
+div.id = 'box-id'
+div.innerHTML = `
+<input type="checkbox" id=${interest.id} name="interest" value="interest">
+<label for="interest">${interest.name}</label>`
+fieldset.appendChild(div)    
+}
 
+const form = document.querySelector('.add-user-form')
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log(e.target)
+    createUser(e.target)
+})
 
+const createUser = form => {
+
+    fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: form.name.value,
+            age: form.age.value,
+            gender: form.gender.value,
+            smoker: form.smoker.value,
+            has_kids: form.has_kids.value,
+            tagline: form.tagline.value,
+            image: form.image.value
+        })
+    })
+    .then(response => response.json())
+    .then(user => renderUser(user))
+}
+
+const checkbox = document.querySelector("box-id")
+console.log(checkbox)
+const createUserInterests = interests => {
+    console.log(form.checkbox.name)
+    fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            
+        })
+    })
+    .then(response => response.json())
+    .then(user => renderUser(user))
 }
