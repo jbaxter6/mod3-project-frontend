@@ -36,11 +36,11 @@
     justify-self: center;
     height: 12rem;
     width: auto;
-    margin: auto ;
+    margin: auto;
 }
 
 .userCard {
-    display: inline-block;
+    display: inline-grid;
     width: 20%;
     border: thin solid black;
     margin: 10px;
