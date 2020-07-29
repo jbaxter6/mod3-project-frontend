@@ -2,7 +2,7 @@
     display: inline-block;
     background-color: white;
     width: 100vw;
-    height: 10vh;
+    height: 12vh;
     text-align: left;
     color: black;
 }
@@ -11,3 +11,43 @@
     height: 90vh;
     background-color: white;
 }
+
+/* .user-card {
+    text-align: center;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 15rem;
+    height: 25rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px #E04B52
+}
+/* 
+#toy-collection {
+    margin: 2rem;
+  } */ */
+
+#user-collection {
+    margin: 2rem;
+}
+
+.user-image {
+    border: thin solid black;
+    justify-self: center;
+    height: 12rem;
+    width: auto;
+    margin: auto ;
+}
+
+.userCard {
+    display: inline-block;
+    width: 20%;
+    border: thin solid black;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user-details {
+    margin: 5%;
+}
+
