@@ -1,9 +1,17 @@
 const baseUrl = 'http://localhost:3000/api/v1/users'
 const interestUrl = 'http://localhost:3000/api/v1/interests'
 
+const fieldset = document.createElement('fieldset')
+fieldset.id ="form-checkbox"
+
+const legend = document.createElement('legend')
+legend.classList = "form-header"
+legend.textContent = "Choose your Interests:"
+fieldset.appendChild(legend)
+
 document.addEventListener("DOMContentLoaded", function(e){
     fetchUsers()
-    fetchInterests()
+    
 })
 
 const fetchUsers = () => {
@@ -17,10 +25,10 @@ const renderUsers = (users) => {
 }
 
 const renderUser = user => {
-    const userCollection= document.querySelector('#user-collection')
-
+    const userCollection= document.querySelector('.float-container')
+    
     const userCard = document.createElement('div')
-    userCard.className = "userCard"
+    userCard.className = "float-child"
     userCollection.appendChild(userCard)
 
     const userImage = document.createElement('img')
@@ -32,7 +40,7 @@ const renderUser = user => {
     userDetails.className = "user-details"
     userDetails.innerHTML = `
     <h3>Name: ${user.name}</h3>
-    <p>Talk your talk: ${user.tagline}</p>
+    <p>Tagline: ${user.tagline}</p>
     <p>Age: ${user.age}</p>
     <p>Gender: ${user.gender}</p>
     <p>Do you smoke: ${user.smoker}</p>
@@ -55,20 +63,29 @@ const renderInterests = interests => {
 }
     
 const renderInterest = interest => {
-const fieldset = document.querySelector('#form-checkbox')
-const div = document.createElement('div')
-div.id = 'box-id'
-div.innerHTML = `
-<input type="checkbox" id=${interest.id} name="interest" value="interest">
-<label for="interest">${interest.name}</label>`
-fieldset.appendChild(div)    
+    const fieldset = document.querySelector('#form-checkbox')
+
+
+    const div = document.createElement('div')
+    div.id = 'box-id'
+    div.innerHTML = `
+    <input type="checkbox" id=${interest.id} name="${interest.name}" value="${interest.name}">
+    <label for="interest">${interest.name}</label>
+    `
+    fieldset.appendChild(div)    
 }
+
+
+
 
 const form = document.querySelector('.add-user-form')
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log(e.target)
     createUser(e.target)
+
+    form.appendChild(fieldset)
+    
 })
 
 const createUser = form => {
@@ -91,10 +108,15 @@ const createUser = form => {
     })
     .then(response => response.json())
     .then(user => renderUser(user))
+
+    const subbedForm = document.querySelector("#create-form")
+    subbedForm.innerHTML = ""
+    fetchInterests()
 }
 
 const checkbox = document.querySelector("box-id")
 console.log(checkbox)
+
 const createUserInterests = interests => {
     console.log(form.checkbox.name)
     fetch(baseUrl, {
@@ -110,3 +132,6 @@ const createUserInterests = interests => {
     .then(response => response.json())
     .then(user => renderUser(user))
 }
+
+
+

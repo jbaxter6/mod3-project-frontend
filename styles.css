@@ -1,8 +1,10 @@
 #header {
     display: inline-block;
     background-color: white;
+    border: thin solid white;
+    box-shadow: 10px 10px 8px grey;
     width: 100vw;
-    height: 12vh;
+    height: 15vh;
     text-align: left;
     color: black;
 }
@@ -12,23 +14,16 @@
     background-color: white;
 }
 
-/* .user-card {
-    text-align: center;
-    border: grey solid 1px;
-    padding: 1rem;
-    width: 15rem;
-    height: 25rem;
-    display: inline-grid;
-    margin: 1rem 2rem;
-    box-shadow: 3px 4px #E04B52
+.li {
+    float: left
 }
-/* 
-#toy-collection {
-    margin: 2rem;
-  } */ */
 
-#user-collection {
-    margin: 2rem;
+.container{
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 300px;
+    width: 50vw;
+    
 }
 
 .user-image {
@@ -39,10 +34,20 @@
     margin: auto;
 }
 
-.userCard {
+#head {
+    font-size: 30px;
+}
+
+.form-header {
+    font-style:italic;
+}
+
+.float-child {
     display: inline-grid;
     width: 20%;
     border: thin solid black;
+    box-shadow: 10px 10px 8px grey;
+    margin-top: 20px;
     margin: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -50,4 +55,34 @@
 .user-details {
     margin: 5%;
 }
+
+.add-user-form {
+    margin-left: 100px;
+    border: thin solid black;
+}
+
+#form-checkbox {
+    display: inline-grid;
+    
+}
+
+#box-id {
+    display: block;
+}
+
+fieldset {
+    width: 250px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+  }
+
+ 
+
+
 
