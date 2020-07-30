@@ -2,7 +2,13 @@ const baseUrl = 'http://localhost:3000/api/v1/users'
 const interestUrl = 'http://localhost:3000/api/v1/interests'
 
 const fieldset = document.createElement('fieldset')
-fieldset.id ="form-checkbox"
+const fieldForm = document.createElement('form')
+fieldset.id = "form-checkbox"
+let div = document.querySelector('.container')
+console.log(fieldset)
+console.log(fieldForm)
+fieldForm.append(fieldset)
+div.append(fieldForm)
 
 const subInterest = document.createElement('button')
 subInterest.innerHTML = `
@@ -25,6 +31,13 @@ legend.classList = "form-header"
 legend.textContent = "Choose your Interests:"
 fieldset.appendChild(legend)
 fieldset.appendChild(subInterest)
+div.appendChild(fieldForm)  
+
+fieldForm.addEventListener('submit', function(e){
+    e.preventDefault()
+    console.log("Hi")
+})
+
 
 document.addEventListener("DOMContentLoaded", function(e){
     
@@ -78,20 +91,20 @@ const renderInterests = interests => {
     interests.forEach(interest => {
         renderInterest(interest)
     })
+    fieldForm.appendChild(fieldset)
 }
     
 const renderInterest = interest => {
     const fieldset = document.querySelector('#form-checkbox')
-
-
     const div = document.createElement('div')
     div.id = 'box-id'
     div.innerHTML = `
     <input type="checkbox" id=${interest.id} name="${interest.name}" value="${interest.name}">
     <label for="interest">${interest.name}</label>
     `
-
-    fieldset.appendChild(div)    
+    
+    fieldset.append(div)
+   // console.log(fieldset)
 }
 
 
@@ -101,14 +114,11 @@ const form = document.querySelector('.add-user-form')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-
+    console.log(e.target)
     container = document.querySelector('.container')
     container.appendChild(fieldset)
 
-        fieldset.addEventListener('submit', function(e){
-            console.log(e.target)
-        }
-        )
+        
         
     
 
