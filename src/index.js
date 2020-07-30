@@ -4,13 +4,30 @@ const interestUrl = 'http://localhost:3000/api/v1/interests'
 const fieldset = document.createElement('fieldset')
 fieldset.id ="form-checkbox"
 
+const subInterest = document.createElement('button')
+subInterest.innerHTML = `
+<input
+type="submit"
+name="submit"
+value="Find Your Match!"
+class="submit"
+/>
+`
+
+// subInterest.setAttribute('type', submit)
+// subInterest.setAttribute('name', submit)
+// subInterest.setAttribute('value', "Find your Match!")
+// subInterest.setAttribute('class', submit)
+
+
 const legend = document.createElement('legend')
 legend.classList = "form-header"
 legend.textContent = "Choose your Interests:"
 fieldset.appendChild(legend)
+fieldset.appendChild(subInterest)
 
 document.addEventListener("DOMContentLoaded", function(e){
-    fetchUsers()
+    
     
 })
 
@@ -29,6 +46,7 @@ const renderUser = user => {
     
     const userCard = document.createElement('div')
     userCard.className = "float-child"
+    userCard.dataset.id = user.id
     userCollection.appendChild(userCard)
 
     const userImage = document.createElement('img')
@@ -72,6 +90,7 @@ const renderInterest = interest => {
     <input type="checkbox" id=${interest.id} name="${interest.name}" value="${interest.name}">
     <label for="interest">${interest.name}</label>
     `
+
     fieldset.appendChild(div)    
 }
 
@@ -79,14 +98,28 @@ const renderInterest = interest => {
 
 
 const form = document.querySelector('.add-user-form')
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    console.log(e.target)
-    createUser(e.target)
 
-    form.appendChild(fieldset)
+    container = document.querySelector('.container')
+    container.appendChild(fieldset)
+
+        fieldset.addEventListener('submit', function(e){
+            console.log(e.target)
+        }
+        )
+        
+    
+
+    console.dir(e.target)
+    createUser(e.target)
+    createUserInterests(user)
+    fetchUsers()
     
 })
+
+
 
 const createUser = form => {
 
@@ -107,7 +140,10 @@ const createUser = form => {
         })
     })
     .then(response => response.json())
-    .then(user => renderUser(user))
+    .then(user => {
+        
+    })
+
 
     const subbedForm = document.querySelector("#create-form")
     subbedForm.innerHTML = ""
