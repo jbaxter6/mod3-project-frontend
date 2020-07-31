@@ -1,8 +1,8 @@
 #header {
     display: inline-block;
-    background-color: white;
-    border: thin solid white;
-    box-shadow: 10px 10px 8px grey;
+    background-color: black;
+    border:  solid black;
+    border-radius: 8px;
     width: 100vw;
     height: 15vh;
     text-align: left;
@@ -10,8 +10,9 @@
 }
 
 #main {
-    height: 90vh;
-    background-color: white;
+    height: 150vh;
+    background-color: black;
+    border-radius: 8px;
 }
 
 .li {
@@ -27,33 +28,44 @@
 }
 
 .user-image {
-    border: thin solid black;
+    border:  solid black;
+    border-radius: 4px;
     justify-self: center;
-    height: 12rem;
-    width: auto;
+    height: 20rem;
+    width: 50;
     margin: auto;
 }
 
 #head {
-    font-size: 30px;
+    font-size: 50px;
+    font-style: inherit;
+    font-weight: bolder;
+    color: magenta;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
 .form-header {
-    font-style:italic;
+    font-stretch: semi-condensed;
+    font-family: fantasy;
+    color: white
 }
 
 .float-child {
     display: inline-grid;
-    width: 20%;
-    border: thin solid black;
-    box-shadow: 10px 10px 8px grey;
-    margin-top: 20px;
+    width: 30%;
+    border: solid white;
+    margin-top: 10px;
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 30px;
+  background-color: white;
+ 
+  
 }
 
 .user-details {
-    margin: 5%;
+    margin: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .add-user-form {
@@ -62,12 +74,14 @@
 }
 
 #form-checkbox {
-    display: inline-grid;
+    display: inline-flex;
+    font-family: fantasy;
     
 }
 
 #box-id {
     display: block;
+    color: white
 }
 
 fieldset {
@@ -82,7 +96,28 @@ fieldset {
     border: 2px groove (internal value);
   }
 
+  .float-container {
+      background-color: black;
+  }
+
+  .delete-user {
+background-color: red;
+border-radius: 8px;
+width: 150px;
+justify-self: center;
+color: white;
+  }
  
+.submit{
+background-color: red;
+border-radius: 8px;
+width: 200px;
+justify-self: center;
+color: white;
+}
+
+
+
 
 
 

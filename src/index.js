@@ -83,7 +83,8 @@ const renderUser = user => {
 
     let deleteButton = document.createElement('button')
     deleteButton.dataset.id = user.id
-    deleteButton.innerText = 'delete user'
+    deleteButton.innerText = 'Delete'
+    deleteButton.className = 'delete-user'
    
     userCard.appendChild(deleteButton)
     deleteButton.addEventListener('click', (e) => {
