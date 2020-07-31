@@ -1,7 +1,8 @@
 #header {
     display: inline-block;
-    background-color: lavender;
+    background-color: black;
     border:  solid black;
+    border-radius: 8px;
     width: 100vw;
     height: 15vh;
     text-align: left;
@@ -9,8 +10,9 @@
 }
 
 #main {
-    height: 100vh;
-    background-color: lavender;
+    height: 150vh;
+    background-color: black;
+    border-radius: 8px;
 }
 
 .li {
@@ -26,10 +28,11 @@
 }
 
 .user-image {
-    border: thin solid black;
+    border:  solid black;
+    border-radius: 4px;
     justify-self: center;
-    height: 12rem;
-    width: auto;
+    height: 20rem;
+    width: 50;
     margin: auto;
 }
 
@@ -45,15 +48,17 @@
 .form-header {
     font-stretch: semi-condensed;
     font-family: fantasy;
+    color: white
 }
 
 .float-child {
     display: inline-grid;
     width: 30%;
-    border: solid black;
+    border: solid white;
     margin-top: 10px;
     margin: 10px;
   border-radius: 30px;
+  background-color: white;
  
   
 }
@@ -69,12 +74,14 @@
 }
 
 #form-checkbox {
-    display: inline-grid;
+    display: inline-flex;
+    font-family: fantasy;
     
 }
 
 #box-id {
     display: block;
+    color: white
 }
 
 fieldset {
@@ -90,9 +97,27 @@ fieldset {
   }
 
   .float-container {
-      background-color: lavender;
+      background-color: black;
+  }
+
+  .delete-user {
+background-color: red;
+border-radius: 8px;
+width: 150px;
+justify-self: center;
+color: white;
   }
  
+.submit{
+background-color: red;
+border-radius: 8px;
+width: 200px;
+justify-self: center;
+color: white;
+}
+
+
+
 
 
 
