@@ -1,14 +1,17 @@
-const baseUrl = 'http://localhost:3000/api/v1/users'
+const baseUrl = 'http://localhost:3000/api/v1/users/'
 const interestUrl = 'http://localhost:3000/api/v1/interests'
+const userInterestUrl = 'http://localhost:3000/api/v1/user_interests/'
+// /api/v1/user_interests/:id
+//  /api/v1/user_interests/:id/edit
 
 const fieldset = document.createElement('fieldset')
 const fieldForm = document.createElement('form')
 fieldset.id = "form-checkbox"
 let div = document.querySelector('.container')
-console.log(fieldset)
-console.log(fieldForm)
 fieldForm.append(fieldset)
 div.append(fieldForm)
+
+
 
 const subInterest = document.createElement('button')
 subInterest.innerHTML = `
@@ -19,13 +22,6 @@ value="Find Your Match!"
 class="submit"
 />
 `
-
-// subInterest.setAttribute('type', submit)
-// subInterest.setAttribute('name', submit)
-// subInterest.setAttribute('value', "Find your Match!")
-// subInterest.setAttribute('class', submit)
-
-
 const legend = document.createElement('legend')
 legend.classList = "form-header"
 legend.textContent = "Choose your Interests:"
@@ -33,10 +29,16 @@ fieldset.appendChild(legend)
 fieldset.appendChild(subInterest)
 div.appendChild(fieldForm)  
 
-fieldForm.addEventListener('submit', function(e){
-    e.preventDefault()
-    console.log("Hi")
-})
+// fieldForm.addEventListener('submit', function(e){
+//     e.preventDefault()
+//     let interests = []
+//     document.querySelectorAll('#box-id').forEach(div => { if 
+//         (div.children[0].checked === true) 
+//         interests.push(div.children[0].value)} 
+//         )
+//     createUserInterests(interests)
+        
+// })
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -60,7 +62,7 @@ const renderUser = user => {
     const userCard = document.createElement('div')
     userCard.className = "float-child"
     userCard.dataset.id = user.id
-    userCollection.appendChild(userCard)
+    
 
     const userImage = document.createElement('img')
     userImage.src = user.image
@@ -78,6 +80,17 @@ const renderUser = user => {
     <p>Do you have kids: ${user.has_kids}</p>
     `
     userCard.appendChild(userDetails)
+
+    let deleteButton = document.createElement('button')
+    deleteButton.dataset.id = user.id
+    deleteButton.innerText = 'delete user'
+   
+    userCard.appendChild(deleteButton)
+    deleteButton.addEventListener('click', (e) => {
+        deleteFetch(e, user, userCard)
+    })
+
+    userCollection.appendChild(userCard)
 }
 
 const fetchInterests = () => {
@@ -111,20 +124,14 @@ const renderInterest = interest => {
 
 
 const form = document.querySelector('.add-user-form')
-
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log(e.target)
     container = document.querySelector('.container')
     container.appendChild(fieldset)
 
-        
-        
-    
-
-    console.dir(e.target)
     createUser(e.target)
-    createUserInterests(user)
+    // createUserInterests(user)
     fetchUsers()
     
 })
@@ -132,7 +139,6 @@ form.addEventListener('submit', (e) => {
 
 
 const createUser = form => {
-
     fetch(baseUrl, {
         method: "POST",
         headers: {
@@ -151,7 +157,17 @@ const createUser = form => {
     })
     .then(response => response.json())
     .then(user => {
-        
+        renderUser(user)
+        fieldForm.addEventListener('submit', function(e){
+            e.preventDefault()
+            let interests = []
+            document.querySelectorAll('#box-id').forEach(div => { if 
+                (div.children[0].checked === true) 
+                interests.push(div.children[0].value)} 
+                )
+            createUserInterests(interests, user)
+                
+        })
     })
 
 
@@ -160,24 +176,36 @@ const createUser = form => {
     fetchInterests()
 }
 
-const checkbox = document.querySelector("box-id")
-console.log(checkbox)
 
-const createUserInterests = interests => {
-    console.log(form.checkbox.name)
-    fetch(baseUrl, {
+const createUserInterests = (interests, user) => {
+    console.log(interests)
+    fetch(userInterestUrl, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
         body: JSON.stringify({
+            user_id: user.id,
+            "interests": interests
             
+            // console.log(user.interests)
         })
     })
     .then(response => response.json())
-    .then(user => renderUser(user))
+    .then(user_int => console.log(user_int))
 }
 
 
-
+function deleteFetch(e, user, userCard){
+    fetch(baseUrl + userCard.dataset.id, {
+        method: "DELETE",
+        headers:{
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+    })
+    .then(resp => resp.json())
+   
+    .then(userCard.remove())
+}
