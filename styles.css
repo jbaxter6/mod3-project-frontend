@@ -1,8 +1,7 @@
 #header {
     display: inline-block;
-    background-color: white;
-    border: thin solid white;
-    box-shadow: 10px 10px 8px grey;
+    background-color: lavender;
+    border:  solid black;
     width: 100vw;
     height: 15vh;
     text-align: left;
@@ -10,8 +9,8 @@
 }
 
 #main {
-    height: 90vh;
-    background-color: white;
+    height: 100vh;
+    background-color: lavender;
 }
 
 .li {
@@ -35,25 +34,33 @@
 }
 
 #head {
-    font-size: 30px;
+    font-size: 50px;
+    font-style: inherit;
+    font-weight: bolder;
+    color: magenta;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
 .form-header {
-    font-style:italic;
+    font-stretch: semi-condensed;
+    font-family: fantasy;
 }
 
 .float-child {
     display: inline-grid;
-    width: 20%;
-    border: thin solid black;
-    box-shadow: 10px 10px 8px grey;
-    margin-top: 20px;
+    width: 30%;
+    border: solid black;
+    margin-top: 10px;
     margin: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 30px;
+ 
+  
 }
 
 .user-details {
-    margin: 5%;
+    margin: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .add-user-form {
@@ -82,6 +89,9 @@ fieldset {
     border: 2px groove (internal value);
   }
 
+  .float-container {
+      background-color: lavender;
+  }
  
 
 
